@@ -1,0 +1,34 @@
+<ul class="predicates">
+  <li>
+    Sort by:
+    <ul>
+      <li><a href="" ng:click="orderField = 'age'">Newest</a></li>
+      <li><a href="" ng:click="orderField = 'name'">Alphabetical</a></li>
+    </ul>
+  </li>
+  <li>
+    Search: <input type="text" name="predicate.$"/>
+  </li>
+  <li>
+    Carrier:
+      <ul class="carrier">
+        <li ng:repeat="carrier in ['', 'AT&amp;T', 'Cellular South', 'Sprint', 'T-Mobile', 'US Cellular', 'Verizon']">
+		      <a href="" ng:click="predicate.carrier = carrier">{{carrier||'any'}}</a>
+        </li>
+      </ul>
+  </li>
+</ul>
+<ul class="phones">
+  <li ng:repeat="phone in phones.$filter(predicate).$orderBy(orderField)">
+    <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+    <a href="#/phones/{{phone.id}}" class="thumb"><img ng:src="{{phone.imageUrl}}"/></a>
+    <div class="favorite">
+      [
+	    <a href="" ng:hide="favorites.has(phone.id)" ng:click="favorites.add(phone.id)">mark favorite</a>
+	    <a href="" ng:show="favorites.has(phone.id)" ng:click="favorites.remove(phone.id)">remove favorite</a>
+	    ]
+    </div>
+    <p>{{phone.snippet}}</p>
+    <div class="clear"></div>
+  </li>
+</ul>

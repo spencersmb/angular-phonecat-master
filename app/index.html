@@ -1,0 +1,16 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org/">
+<head>
+  <title>Angular App</title>
+  <link rel="stylesheet" href="css/phonecat.css">
+</head>
+<body style="display:none;" ng:show="true">
+  <ng:include src="$route.current.template" scope="$route.current.scope"></ng:include>
+  
+  <script src="lib/angular/angular.js" ng:autobind></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/widgets.js"></script>
+</body>
+</html>
